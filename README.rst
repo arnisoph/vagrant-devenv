@@ -56,18 +56,13 @@ Files & Directories
     |-- Vagrantfile.template          # Default Vagrantfile for every Vagrant box
     |-- configs/                      # Default user variable files for packer
     |   `-- centos-7/
-    |       `-- minimal.json
     |-- scripts/                      # Scripts that are used for image provisioning
-    |   |-- A_base
-    |   |-- B_packages
-    |   |-- ...
-    |   `-- X_cleanup
+    |   `-- rhel/
     |-- shared/
     |   `-- boxes/                    # Created Vagrant boxes will be placed here
     `-- templates/
         `-- centos-7/                 # A packer template directory
             |-- public_html/
-            |   `-- ks.cfg
             `-- template.json         # Packer template
 
 
