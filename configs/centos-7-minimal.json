@@ -1,0 +1,11 @@
+{
+  "box_name": "DEV_CentOS_70",
+  "ostype_vbox": "RedHat_64",
+  "ostype_vmware": "centos-64",
+  "iso_url": "http://ftp.hosteurope.de/mirror/centos.org/7/isos/x86_64/CentOS-7.0-1406-x86_64-Minimal.iso",
+  "iso_checksum": "e3afe3f1121d69c40cc23f0bafa05e5d",
+  "output_folder": "shared/boxes",
+  "headless": "false",
+  "kickstart_file": "ks.cfg",
+  "ssh_password": "z1ftLAU6PYKxB3_RRbzyax5O24sflB1S"
+}

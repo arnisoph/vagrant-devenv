@@ -1,0 +1,49 @@
+{
+  "variables": {
+    "iso_url": null,
+    "iso_checksum": null,
+    "iso_checksum_type": "md5",
+    "release": null,
+    "output_folder": null,
+    "ostype_vbox": "",
+    "ostype_vmware": "",
+    "box_name": null,
+    "headless": null,
+    "kickstart_file": null,
+    "ssh_password": "",
+    "http_directory": "boxes/centos-7/public_html"
+  },
+  "builders": [
+    {
+      "name": "virtualbox",
+      "type": "virtualbox-iso",
+      "http_directory": "{{ user `http_directory` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "guest_os_type": "{{ user `ostype_vbox` }}",
+      "guest_additions_path": "/tmp/VBoxGuestAdditions_{{.Version}}.iso",
+      "virtualbox_version_file": "/etc/vbox_version",
+      "headless": "{{ user `headless` }}",
+      "ssh_username": "root",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_wait_timeout": "30m",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/{{ user `kickstart_file` }}<enter>"
+      ],
+      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
+      "disk_size": 25000,
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"],
+        ["modifyvm", "{{.Name}}", "--usb", "off"],
+        ["modifyvm", "{{.Name}}", "--usbehci", "off"],
+        ["modifyvm", "{{.Name}}", "--audio", "none"]
+      ]
+    }
+  ],
+  "provisioners": [
+  ],
+  "post-processors": [
+  ]
+}
