@@ -52,7 +52,7 @@ Files & Directories
 
 TODO: create tree, explain files & dirs
 
-Deploying a minimal vagrant box
+Deploying a minimal Vagrant box
 -------------------------------
 
 Create the box
@@ -68,14 +68,14 @@ Validating config syntax:
   -var release='0.1' \
   -only=virtualbox \
   -var-file=configs/centos-7-minimal.json \
-  boxes/centos-7/template.json
+  templates/centos-7/template.json
 
-Build the image for vagrant:
+Build the image for Vagrant:
 
   $ packer build -var release='0.1' \
   -only=virtualbox \
   -var-file=configs/centos-7-minimal.json \
-  boxes/centos-7/template.json
+  templates/centos-7/template.json
 
 This will take a long time now..
 
