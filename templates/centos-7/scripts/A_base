@@ -2,6 +2,7 @@
 
 echo '##############################################'
 echo "Starting ${0}.."
+set -x
 
 if [[ -n "${ROOT_PASSWORD}" ]]; then
   echo "${ROOT_PASSWORD}" | passwd --stdin root

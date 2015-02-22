@@ -56,10 +56,12 @@
       "inline": [
         "chmod 700 /tmp/packer-provision/*",
         "for f in /tmp/packer-provision/*; do ${f}; done",
-        "test '{{ user `debug_provision` }}' = 'yes' && sleep 133337"
+        "echo Cleaning /tmp && rm -rf /tmp/*",
+        "test '{{ user `debug_provision` }}' = 'yes' && echo Taking a nap for 133337 seconds.. && sleep 133337"
       ],
       "environment_vars": [
-        "ROOT_PASSWORD={{ user `root_password` }}"
+        "ROOT_PASSWORD={{ user `root_password` }}",
+        "DEBUG_PROVISION={{ user `debug_provision` }}"
       ]
     }
   ],

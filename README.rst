@@ -79,9 +79,18 @@ If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
   shared/boxes/DEV_CentOS_70_min-virtualbox-0.1.box
 
 
-Instantiate the box
-'''''''''''''''''''
+Instantiate the Vagrant box
+'''''''''''''''''''''''''''
 FIXME
+
+Debugging
+---------
+
+In case of any errors during image/ box creation, keep cool and follow the
+following steps:
+
+Packer:
+* build image with debug param ``-var debug_provision="yes"``, this causes a long sleep at the end of image provisioning so that you can log into the machine
 
 Additional resources
 --------------------
@@ -91,5 +100,4 @@ None
 TODO
 ----
 
-* use travis CI to test bootstrap?
 * support puppet?

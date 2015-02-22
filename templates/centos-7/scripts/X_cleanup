@@ -2,22 +2,15 @@
 
 echo '##############################################'
 echo "Starting ${0}.."
+set -x
 
 # remove udev rules
 rm /etc/udev/rules.d/70-persistent-*.rules
 rm -rf /dev/.udev/
 
 # remove hardware adress from configuration
-for f in /etc/sysconfig/network-scripts/ifcfg-eth*; do
-  sed -i '/^HWADDR/d' "${file_path}"
-done
-
-for f in /etc/sysconfig/network-scripts/ifcfg-enp*; do
-  sed -i '/^HWADDR/d' "${file_path}"
-done
+find /etc/sysconfig/network-scripts/ -name 'ifcfg-eth*' -exec sed -i '/^HWADDR/d' {} \;
+find /etc/sysconfig/network-scripts/ -name 'ifcfg-enp*' -exec sed -i '/^HWADDR/d' {} \;
 
 # clean up yum repository caches
 yum -y clean all
-
-# remove temporary files
-rm -rf /tmp/*

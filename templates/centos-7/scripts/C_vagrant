@@ -2,6 +2,7 @@
 
 echo '##############################################'
 echo "Starting ${0}.."
+set -x
 
 # configure /etc/sudoers
 sed -i 's/^.*requiretty/#Defaults requiretty/' /etc/sudoers

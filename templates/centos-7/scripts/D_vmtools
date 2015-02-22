@@ -2,6 +2,7 @@
 
 echo '##############################################'
 echo "Starting ${0}.."
+set -x
 
 if [[ $PACKER_BUILDER_TYPE =~ virtualbox ]]; then
   # install prerequisites
