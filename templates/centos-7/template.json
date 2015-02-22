@@ -4,7 +4,7 @@
     "iso_checksum": null,
     "iso_checksum_type": "md5",
     "release": null,
-    "output_directory": "boxes/centos-7/images",
+    "output_directory": "templates/centos-7/images",
     "boxes_directory": "shared/boxes",
     "ostype_vbox": "RedHat_64",
     "ostype_vmware": "centos-64",
@@ -12,7 +12,7 @@
     "headless": null,
     "kickstart_file": "ks.cfg",
     "ssh_password": null,
-    "http_directory": "boxes/centos-7/public_html"
+    "http_directory": "templates/centos-7/public_html"
   },
   "builders": [
     {
