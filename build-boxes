@@ -1,0 +1,15 @@
+#!/bin/bash
+
+packer build \
+  -var headless=false \
+  -var release="0.1-${RANDOM}" \
+  -only=virtualbox \
+  -var-file=configs/debian-7/minimal.json \
+  templates/debian-7/template.json
+
+packer build \
+  -var headless=false \
+  -var release="0.1-${RANDOM}" \
+  -only=virtualbox \
+  -var-file=configs/centos-7/minimal.json \
+  templates/centos-7/template.json

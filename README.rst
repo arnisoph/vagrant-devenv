@@ -119,6 +119,9 @@ If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
   shared/boxes/DEV_CentOS_70_min-virtualbox-0.1.box
 
 
+See ``build-boxes`` how to build all images.
+
+
 Instantiate the Vagrant box
 '''''''''''''''''''''''''''
 FIXME
