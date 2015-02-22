@@ -90,7 +90,7 @@ Create the base box
     ./build-boxes centos7
 
     # If everything went well you'll find a new Vagrant box in shared/boxes/:
-    find shared/boxes -type f
+    ls -l shared/boxes/
 
 
 Instantiate the Vagrant box
