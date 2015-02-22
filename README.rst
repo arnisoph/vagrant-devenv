@@ -51,6 +51,7 @@ Files & Directories
 -------------------
 
 ::
+
     |-- README.rst
     |-- Vagrantfile.template          # Default Vagrantfile for every Vagrant box
     |-- configs/                      # Default user variable files for packer
