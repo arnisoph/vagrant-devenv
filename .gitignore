@@ -49,4 +49,5 @@ Thumbs.db
 packer_cache/
 output-virtualbox/
 shared/boxes/
+templates/*/images
 *.box

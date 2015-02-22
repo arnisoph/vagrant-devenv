@@ -60,21 +60,21 @@ Create the box
 
 Clone this Git repository (vagrant-devenv) to you local workstation.
 
-Prepare your image config or use an exiting one, e.g. ``configs/centos-7-minimal.json``
+Prepare your image config or use an exiting one, e.g. ``configs/centos-7/minimal.json``
 
 Validating config syntax:
 
   $ packer validate \
   -var release='0.1' \
   -only=virtualbox \
-  -var-file=configs/centos-7-minimal.json \
+  -var-file=configs/centos-7/minimal.json \
   templates/centos-7/template.json
 
 Build the image for Vagrant:
 
   $ packer build -var release='0.1' \
   -only=virtualbox \
-  -var-file=configs/centos-7-minimal.json \
+  -var-file=configs/centos-7/minimal.json \
   templates/centos-7/template.json
 
 This will take a long time now..
