@@ -51,23 +51,23 @@ Files & Directories
 -------------------
 
 ::
-  |-- README.rst
-  |-- Vagrantfile.template          # Default Vagrantfile for every Vagrant box
-  |-- configs/                      # Default user variable files for packer
-  |   `-- centos-7/
-  |       `-- minimal.json
-  |-- shared/
-  |   `-- boxes/                    # Created Vagrant boxes will be placed here
-  `-- templates/
-      |-- centos-7/                 # A packer template directory
-      |   |-- public_html/
-      |   |   `-- ks.cfg
-      |   |-- scripts/              # Scripts executed during image provisioning
-      |   |   |-- A_base
-      |   |   |-- B_packages
-      |   |   |-- ...
-      |   |   `-- X_cleanup
-      |   `-- template.json         # Packer template
+    |-- README.rst
+    |-- Vagrantfile.template          # Default Vagrantfile for every Vagrant box
+    |-- configs/                      # Default user variable files for packer
+    |   `-- centos-7/
+    |       `-- minimal.json
+    |-- shared/
+    |   `-- boxes/                    # Created Vagrant boxes will be placed here
+    `-- templates/
+        |-- centos-7/                 # A packer template directory
+        |   |-- public_html/
+        |   |   `-- ks.cfg
+        |   |-- scripts/              # Scripts executed during image provisioning
+        |   |   |-- A_base
+        |   |   |-- B_packages
+        |   |   |-- ...
+        |   |   `-- X_cleanup
+        |   `-- template.json         # Packer template
 
 
 Deploying a minimal Vagrant box
