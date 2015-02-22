@@ -143,5 +143,5 @@ Additional resources
 TODO
 ----
 
-* support puppet?
-* add LICENSE file
+* prepare salt?
+* prepare puppet?
