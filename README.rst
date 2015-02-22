@@ -87,24 +87,15 @@ Create the base box
     cd vagrant-devenv/
 
     # Prepare your image config or use an exiting one, e.g. ``configs/centos-7/minimal.json``
+    packer_params="-var release=0.1 -var headless=false -only=virtualbox -var-file=configs/centos-7/minimal.json templates/centos-7/template.json"
 
     # Validate config syntax:
 
-    packer validate \
-        -var release="0.1" \
-        -var headless=false \
-        -only=virtualbox \
-        -var-file=configs/centos-7/minimal.json \
-        templates/centos-7/template.json
+    packer validate $packer_params
 
     # Build image for Vagrant:
 
-    packer build \
-        -var release="0.1" \
-        -var headless=false \
-        -only=virtualbox \
-        -var-file=configs/centos-7/minimal.json \
-        templates/centos-7/template.json
+    packer build $packer_params
 
     # If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
 
