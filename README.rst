@@ -1,7 +1,9 @@
-
 ==============
 vagrant-devenv
 ==============
+
+.. image:: http://img.shields.io/github/tag/bechtoldt/vagrant-devenv.svg
+    :target: https://github.com/bechtoldt/vagrant-devenv/tags
 
 .. image:: https://api.flattr.com/button/flattr-badge-large.png
     :target: https://flattr.com/submit/auto?user_id=bechtoldt&url=https%3A%2F%2Fgithub.com%2Fbechtoldt%2Fvagrant-devenv
@@ -12,6 +14,7 @@ Generic environment setup using Vagrant for infrastructure hacking and developme
     :backlinks: none
     :local:
 
+
 Requirements
 ------------
 
@@ -21,6 +24,7 @@ You need:
 * Internet connection (at least for the initial creation of your vagrant boxes)
 * Vagrant >= 1.6.5 (``$ vagrant -v``)
 * Packer >= v0.7.5 (``$ packer version``)
+
 
 Supported Platforms
 -------------------
@@ -42,13 +46,38 @@ Vagrant provisioners:
 
 * Salt (or custom provisioner?)
 
+
 Files & Directories
 -------------------
 
-TODO: create tree, explain files & dirs
+  ::
+  |-- README.rst
+  |-- Vagrantfile.template          # Default Vagrantfile for every Vagrant box
+  |-- configs/                      # Default user variable files for packer
+  |   `-- centos-7/
+  |       `-- minimal.json
+  |-- shared/
+  |   `-- boxes/                    # Created Vagrant boxes will be placed here
+  `-- templates/
+      |-- centos-7/                 # A packer template directory
+      |   |-- public_html/
+      |   |   `-- ks.cfg
+      |   |-- scripts/              # Scripts executed during image provisioning
+      |   |   |-- A_base
+      |   |   |-- B_packages
+      |   |   |-- ...
+      |   |   `-- X_cleanup
+      |   `-- template.json         # Packer template
+
 
 Deploying a minimal Vagrant box
 -------------------------------
+
+Starting conditions
+'''''''''''''''''''
+
+* ~/dev/vagrant-devenv/     (clone of this Git repo)
+* ~/dev/my-project/         (any project Git repo or directory)
 
 Create the base box
 '''''''''''''''''''
@@ -83,21 +112,29 @@ Instantiate the Vagrant box
 '''''''''''''''''''''''''''
 FIXME
 
+
 Debugging
 ---------
 
 In case of any errors during image/ box creation, keep cool and follow the
 following steps:
 
-Packer:
+Packer
+''''''
+
+* set ``headless`` to "true" in your packer user variable file
 * build image with debug param ``-var debug_provision="yes"``, this causes a long sleep at the end of image provisioning so that you can log into the machine
+
 
 Additional resources
 --------------------
 
 None
 
+
 TODO
 ----
 
 * support puppet?
+* add LICENSE file
+* travis ci for all packer templates
