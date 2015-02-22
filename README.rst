@@ -79,38 +79,36 @@ TODO: complete sect
 Create the base box
 '''''''''''''''''''
 
-Clone this Git repository (vagrant-devenv) to your local workstation.
-
-Prepare your image config or use an exiting one, e.g. ``configs/centos-7/minimal.json``
-
-Validate config syntax:
-
 ::
 
-    $ packer validate \
+    # Clone this Git repository (vagrant-devenv) to your local workstation
+    mkdir -p ~/dev/vagrant_hacking/ && cd ~/dev/vagrant_hacking/
+    git clone https://github.com/bechtoldt/vagrant-devenv.git
+    cd vagrant-devenv/
+
+    # Prepare your image config or use an exiting one, e.g. ``configs/centos-7/minimal.json``
+
+    # Validate config syntax:
+
+    packer validate \
         -var release="0.1" \
         -var headless=false \
         -only=virtualbox \
         -var-file=configs/centos-7/minimal.json \
         templates/centos-7/template.json
 
-Build image for Vagrant:
+    # Build image for Vagrant:
 
-::
-
-    $ packer build \
+    packer build \
         -var release="0.1" \
         -var headless=false \
         -only=virtualbox \
         -var-file=configs/centos-7/minimal.json \
         templates/centos-7/template.json
 
-If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
+    # If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
 
-::
-
-  $ find shared/boxes -type f
-  shared/boxes/DEV_CentOS_70_min-virtualbox-0.1.box
+    find shared/boxes -type f
 
 
 See ``build-boxes`` file how to build all images.
@@ -118,7 +116,16 @@ See ``build-boxes`` file how to build all images.
 
 Instantiate the Vagrant box
 '''''''''''''''''''''''''''
-FIXME
+
+::
+
+    # Clone test Git repository (vagrant-devenv-test) to your local workstation
+    mkdir -p ~/dev/vagrant_hacking/ && cd ~/dev/vagrant_hacking/
+    git clone https://github.com/bechtoldt/vagrant-devenv-test.git
+    cd vagrant-devenv-test/
+
+    # Execute one of the 'init' scripts
+    ./init.Debian_78_min
 
 
 Troubleshooting
