@@ -68,14 +68,6 @@ Files & Directories
 Deploying a minimal Vagrant box
 -------------------------------
 
-Starting conditions
-'''''''''''''''''''
-
-* ~/dev/vagrant-devenv/     (clone of this Git repo)
-* ~/dev/my-project/         (any project Git repo or directory)
-
-TODO: complete sect
-
 Create the base box
 '''''''''''''''''''
 
