@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo '##############################################'
+echo "Starting ${0}.."
+
+yum -y install bzip2 rsync which wget unzip
+
+yum -y update

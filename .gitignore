@@ -46,8 +46,7 @@ Thumbs.db
 *.iml
 *~
 
-packer_cache/
-output-virtualbox/
-shared/boxes/
 templates/*/images
+packer_cache
 *.box
+output-*

@@ -11,8 +11,9 @@
     "box_name": null,
     "headless": null,
     "kickstart_file": "ks.cfg",
-    "ssh_password": null,
-    "http_directory": "templates/centos-7/public_html"
+    "root_password": null,
+    "http_directory": "templates/centos-7/public_html",
+    "debug_provision": "no"
   },
   "builders": [
     {
@@ -28,7 +29,7 @@
       "output_directory": "{{ user `output_directory` }}",
       "headless": "{{ user `headless` }}",
       "ssh_username": "root",
-      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_password": "z1ftLAU6PYKxB3_RRbzyax5O24sflB1S",
       "ssh_wait_timeout": "30m",
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `kickstart_file` }}<enter>"
@@ -45,6 +46,22 @@
     }
   ],
   "provisioners": [
+    {
+      "type": "file",
+      "source": "templates/centos-7/scripts",
+      "destination": "/tmp/packer-provision"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "chmod 700 /tmp/packer-provision/*",
+        "for f in /tmp/packer-provision/*; do ${f}; done",
+        "test '{{ user `debug_provision` }}' = 'yes' && sleep 133337"
+      ],
+      "environment_vars": [
+        "ROOT_PASSWORD={{ user `root_password` }}"
+      ]
+    }
   ],
   "post-processors": [
     {

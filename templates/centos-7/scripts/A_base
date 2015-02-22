@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo '##############################################'
+echo "Starting ${0}.."
+
+if [[ -n "${ROOT_PASSWORD}" ]]; then
+  echo "${ROOT_PASSWORD}" | passwd --stdin root
+fi

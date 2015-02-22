@@ -12,11 +12,6 @@ Generic environment setup using Vagrant for infrastructure hacking and developme
     :backlinks: none
     :local:
 
-Credits
--------
-
-FIXME
-
 Requirements
 ------------
 
@@ -55,35 +50,38 @@ TODO: create tree, explain files & dirs
 Deploying a minimal Vagrant box
 -------------------------------
 
-Create the box
-''''''''''''''
+Create the base box
+'''''''''''''''''''
 
-Clone this Git repository (vagrant-devenv) to you local workstation.
+Clone this Git repository (vagrant-devenv) to your local workstation.
 
 Prepare your image config or use an exiting one, e.g. ``configs/centos-7/minimal.json``
 
-Validating config syntax:
+Validate config syntax:
 
   $ packer validate \
-  -var release='0.1' \
+  -var release="0.1" \
   -only=virtualbox \
   -var-file=configs/centos-7/minimal.json \
   templates/centos-7/template.json
 
-Build the image for Vagrant:
+Build image for Vagrant:
 
-  $ packer build -var release='0.1' \
+  $ packer build \
+  -var release="0.1" \
   -only=virtualbox \
   -var-file=configs/centos-7/minimal.json \
   templates/centos-7/template.json
-
-This will take a long time now..
 
 If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
 
   $ find shared/boxes -type f
   shared/boxes/DEV_CentOS_70_min-virtualbox-0.1.box
 
+
+Instantiate the box
+'''''''''''''''''''
+FIXME
 
 Additional resources
 --------------------
