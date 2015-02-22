@@ -86,23 +86,11 @@ Create the base box
     git clone https://github.com/bechtoldt/vagrant-devenv.git
     cd vagrant-devenv/
 
-    # Prepare your image config or use an exiting one, e.g. ``configs/centos-7/minimal.json``
-    packer_params="-var release=0.1 -var headless=false -only=virtualbox -var-file=configs/centos-7/minimal.json templates/centos-7/template.json"
-
-    # Validate config syntax:
-
-    packer validate $packer_params
-
-    # Build image for Vagrant:
-
-    packer build $packer_params
+    # Run the following to use some sane default:
+    ./build-boxes centos7
 
     # If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
-
     find shared/boxes -type f
-
-
-See ``build-boxes`` file how to build all images.
 
 
 Instantiate the Vagrant box

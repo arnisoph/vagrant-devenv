@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PATH=${PATH}:~/packer/
 
 packer_params=( \
   "-var release=0.1" \
@@ -9,7 +10,7 @@ packer_params=( \
   "templates/debian-7/template.json"
 )
 
-packer build ${packer_params[@]}
+[[ $1 == debian7 ]] && packer build ${packer_params[@]}
 
 
 packer_params=( \
@@ -20,4 +21,4 @@ packer_params=( \
   "templates/centos-7/template.json"
 )
 
-packer build ${packer_params[@]}
+[[ $1 == centos7 ]] && packer build ${packer_params[@]}
