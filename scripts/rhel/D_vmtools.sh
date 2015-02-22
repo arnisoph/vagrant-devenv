@@ -5,9 +5,6 @@ echo "Starting ${0}.."
 set -x
 
 if [[ $PACKER_BUILDER_TYPE =~ virtualbox ]]; then
-  # install prerequisites
-  yum -y install kernel-headers-$(uname -r) kernel-devel-$(uname -r) gcc make perl curl wget
-
   # Centos 6.5 bug workaround
   if [[ $(grep ' 6.5' /etc/redhat-release) ]]; then
     cd /usr/src/kernels/*/include/drm

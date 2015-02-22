@@ -8,7 +8,7 @@ vagrant-devenv
 .. image:: https://api.flattr.com/button/flattr-badge-large.png
     :target: https://flattr.com/submit/auto?user_id=bechtoldt&url=https%3A%2F%2Fgithub.com%2Fbechtoldt%2Fvagrant-devenv
 
-Generic environment setup using Vagrant for infrastructure hacking and development
+Environment setup using Vagrant for infrastructure hacking and development
 
 .. contents::
     :backlinks: none
@@ -57,18 +57,18 @@ Files & Directories
     |-- configs/                      # Default user variable files for packer
     |   `-- centos-7/
     |       `-- minimal.json
+    |-- scripts/                      # Scripts that are used for image provisioning
+    |   |-- A_base
+    |   |-- B_packages
+    |   |-- ...
+    |   `-- X_cleanup
     |-- shared/
     |   `-- boxes/                    # Created Vagrant boxes will be placed here
     `-- templates/
-        |-- centos-7/                 # A packer template directory
-        |   |-- public_html/
-        |   |   `-- ks.cfg
-        |   |-- scripts/              # Scripts executed during image provisioning
-        |   |   |-- A_base
-        |   |   |-- B_packages
-        |   |   |-- ...
-        |   |   `-- X_cleanup
-        |   `-- template.json         # Packer template
+        `-- centos-7/                 # A packer template directory
+            |-- public_html/
+            |   `-- ks.cfg
+            `-- template.json         # Packer template
 
 
 Deploying a minimal Vagrant box
@@ -79,6 +79,8 @@ Starting conditions
 
 * ~/dev/vagrant-devenv/     (clone of this Git repo)
 * ~/dev/my-project/         (any project Git repo or directory)
+
+TODO: complete sect
 
 Create the base box
 '''''''''''''''''''
@@ -92,27 +94,28 @@ Validate config syntax:
 ::
 
     $ packer validate \
-    -var release="0.1" \
-    -only=virtualbox \
-    -var-file=configs/centos-7/minimal.json \
-    templates/centos-7/template.json
+        -var release="0.1" \
+        -var headless=false \
+        -only=virtualbox \
+        -var-file=configs/centos-7/minimal.json \
+        templates/centos-7/template.json
 
 Build image for Vagrant:
 
 ::
 
     $ packer build \
-    -var release="0.1" \
-    -only=virtualbox \
-    -var-file=configs/centos-7/minimal.json \
-    templates/centos-7/template.json
+        -var release="0.1" \
+        -var headless=false \
+        -only=virtualbox \
+        -var-file=configs/centos-7/minimal.json \
+        templates/centos-7/template.json
 
 If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
 
 ::
 
   $ find shared/boxes -type f
-
   shared/boxes/DEV_CentOS_70_min-virtualbox-0.1.box
 
 
@@ -121,8 +124,8 @@ Instantiate the Vagrant box
 FIXME
 
 
-Debugging
----------
+Troubleshooting
+---------------
 
 In case of any errors during image/ box creation, keep cool and follow the
 following steps:
@@ -145,4 +148,3 @@ TODO
 
 * support puppet?
 * add LICENSE file
-* travis ci for all packer templates

@@ -4,15 +4,15 @@
     "iso_checksum": null,
     "iso_checksum_type": "md5",
     "release": null,
-    "output_directory": "templates/centos-7/images",
+    "output_directory": "templates/debian-7/images",
     "boxes_directory": "shared/boxes",
-    "ostype_vbox": "RedHat_64",
-    "ostype_vmware": "centos-64",
+    "ostype_vbox": "Debian_64",
+    "ostype_vmware": "debian7-64",
     "box_name": null,
     "headless": null,
     "kickstart_file": "ks.cfg",
     "root_password": null,
-    "http_directory": "templates/centos-7/public_html",
+    "http_directory": "templates/debian-7/public_html",
     "debug_provision": "no"
   },
   "builders": [
@@ -32,10 +32,24 @@
       "ssh_password": "z1ftLAU6PYKxB3_RRbzyax5O24sflB1S",
       "ssh_wait_timeout": "30m",
       "boot_wait": "5s",
-      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -hP now",
       "disk_size": 25000,
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `kickstart_file` }}<enter>"
+        "<esc><wait>",
+        "install ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "debian-installer=en_US ",
+        "auto ",
+        "locale=en_US ",
+        "kbd-chooser/method=de ",
+        "keyboard-configuration/xkb-keymap=de ",
+        "netcfg/get_hostname={{ .Name }} ",
+        "netcfg/get_domain=vagrantup.com ",
+        "fb=false ",
+        "debconf/frontend=noninteractive ",
+        "console-setup/ask_detect=false ",
+        "console-keymaps-at/keymap=de ",
+        "<enter><wait>"
       ],
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "1024"],
@@ -49,7 +63,7 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "scripts/rhel",
+      "source": "scripts/debian",
       "destination": "/tmp/packer-provision"
     },
     {
