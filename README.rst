@@ -89,23 +89,30 @@ Prepare your image config or use an exiting one, e.g. ``configs/centos-7/minimal
 
 Validate config syntax:
 
-  $ packer validate \
-  -var release="0.1" \
-  -only=virtualbox \
-  -var-file=configs/centos-7/minimal.json \
-  templates/centos-7/template.json
+::
+
+    $ packer validate \
+    -var release="0.1" \
+    -only=virtualbox \
+    -var-file=configs/centos-7/minimal.json \
+    templates/centos-7/template.json
 
 Build image for Vagrant:
 
-  $ packer build \
-  -var release="0.1" \
-  -only=virtualbox \
-  -var-file=configs/centos-7/minimal.json \
-  templates/centos-7/template.json
+::
+
+    $ packer build \
+    -var release="0.1" \
+    -only=virtualbox \
+    -var-file=configs/centos-7/minimal.json \
+    templates/centos-7/template.json
 
 If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
 
+::
+
   $ find shared/boxes -type f
+
   shared/boxes/DEV_CentOS_70_min-virtualbox-0.1.box
 
 
