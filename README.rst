@@ -52,7 +52,6 @@ Files & Directories
 
 ::
 
-    |-- README.rst
     |-- Vagrantfile.template          # Default Vagrantfile for every Vagrant box
     |-- configs/                      # Default user variable files for packer
     |   `-- centos-7/
@@ -138,7 +137,7 @@ Packer
 Additional resources
 --------------------
 
-None
+* Test scripts: https://github.com/bechtoldt/vagrant-devenv-test
 
 
 TODO

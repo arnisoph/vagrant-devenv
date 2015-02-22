@@ -8,6 +8,7 @@ yum -y update
 yum -y install \
   kernel-headers-$(uname -r) \
   kernel-devel-$(uname -r) \
+  epel-release \
   perl \
   make \
   gcc \
