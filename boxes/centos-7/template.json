@@ -4,13 +4,14 @@
     "iso_checksum": null,
     "iso_checksum_type": "md5",
     "release": null,
-    "output_folder": null,
-    "ostype_vbox": "",
-    "ostype_vmware": "",
+    "output_directory": "boxes/centos-7/images",
+    "boxes_directory": "shared/boxes",
+    "ostype_vbox": "RedHat_64",
+    "ostype_vmware": "centos-64",
     "box_name": null,
     "headless": null,
-    "kickstart_file": null,
-    "ssh_password": "",
+    "kickstart_file": "ks.cfg",
+    "ssh_password": null,
     "http_directory": "boxes/centos-7/public_html"
   },
   "builders": [
@@ -22,14 +23,15 @@
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_checksum_type": "{{ user `iso_checksum_type` }}",
       "guest_os_type": "{{ user `ostype_vbox` }}",
-      "guest_additions_path": "/tmp/VBoxGuestAdditions_{{.Version}}.iso",
+      "guest_additions_path": "/tmp/VBoxGuestAdditions_{{ .Version }}.iso",
       "virtualbox_version_file": "/etc/vbox_version",
+      "output_directory": "{{ user `output_directory` }}",
       "headless": "{{ user `headless` }}",
       "ssh_username": "root",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_wait_timeout": "30m",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/{{ user `kickstart_file` }}<enter>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `kickstart_file` }}<enter>"
       ],
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "disk_size": 25000,
@@ -45,5 +47,11 @@
   "provisioners": [
   ],
   "post-processors": [
+    {
+      "type": "vagrant",
+      "keep_input_artifact": false,
+      "output": "{{ user `boxes_directory` }}/{{ user `box_name` }}-{{ .Provider }}-{{ user `release` }}.box",
+      "vagrantfile_template": "Vagrantfile.template"
+    }
   ]
 }

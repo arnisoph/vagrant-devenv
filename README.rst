@@ -47,12 +47,16 @@ Vagrant provisioners:
 
 * Salt (or custom provisioner?)
 
+Files & Directories
+-------------------
+
+TODO: create tree, explain files & dirs
 
 Deploying a minimal vagrant box
 -------------------------------
 
-Prepare the box
-'''''''''''''''
+Create the box
+''''''''''''''
 
 Clone this Git repository (vagrant-devenv) to you local workstation.
 
@@ -61,21 +65,24 @@ Prepare your image config or use an exiting one, e.g. ``configs/centos-7-minimal
 Validating config syntax:
 
   $ packer validate \
-  -var release='foo' \
+  -var release='0.1' \
   -only=virtualbox \
   -var-file=configs/centos-7-minimal.json \
   boxes/centos-7/template.json
 
 Build the image for vagrant:
 
-  $ packer build -var release='foo' \
+  $ packer build -var release='0.1' \
   -only=virtualbox \
   -var-file=configs/centos-7-minimal.json \
   boxes/centos-7/template.json
 
 This will take a long time now..
 
+If everything went well you'll find a new Vagrant box in ``shared/boxes/``:
 
+  $ find shared/boxes -type f
+  shared/boxes/DEV_CentOS_70_min-virtualbox-0.1.box
 
 
 Additional resources
