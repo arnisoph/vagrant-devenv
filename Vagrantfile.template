@@ -1,28 +1,28 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 #
-# This Vagrantfile will be added to the box and be part of the lookup path
-# of vagrant init (https://docs.vagrantup.com/v2/vagrantfile/index.html).
+# This Vagrantfile is a minimal one to test the new box.
+# (https://docs.vagrantup.com/v2/vagrantfile/index.html).
 #
 
-Vagrant.require_version ">= 1.6.2"
+Vagrant.require_version ">= 1.6.5"
 
 Vagrant.configure("2") do |config|
+  # make sure path to new box is passed as environment variable
+  BOX_NAME=ENV['BOX_NAME'] || 'vagrant'
+  BOX_BASE_PATH=ENV['BOX_BASE'] || 'undef'
 
-  # set default hostname
-  config.vm.host_name = 'vagrant'
+  # box name and hostname
+  config.vm.box = BOX_NAME
 
-  # Virtualbox specific configuration
-  config.vm.provider :virtualbox do |vb|
+  #config.vm.box_url = "file://" + __dir__ + "/#{BOX_BASE_PATH}"
+
+  # display virtualbox console
+  config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.customize ["modifyvm", :id, "--memory", 512]
-    vb.customize ["modifyvm", :id, "--cpus", 2]
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
-
-  # vagrant ssh configuration
-  config.ssh.forward_x11 = false
 
   # disbale default sync folder
   config.vm.synced_folder ".", "/vagrant", :disabled => true
-
 end
