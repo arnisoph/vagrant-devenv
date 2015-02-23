@@ -42,7 +42,8 @@
         ["modifyvm", "{{.Name}}", "--cpus", "2"],
         ["modifyvm", "{{.Name}}", "--usb", "off"],
         ["modifyvm", "{{.Name}}", "--usbehci", "off"],
-        ["modifyvm", "{{.Name}}", "--audio", "none"]
+        ["modifyvm", "{{.Name}}", "--audio", "none"],
+        ["modifyvm", "{{.Name}}", "--natdnshostresolver1", "on"]
       ]
     }
   ],
