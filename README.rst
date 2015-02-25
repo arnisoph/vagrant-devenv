@@ -123,3 +123,4 @@ TODO
 
 * prepare salt?
 * prepare puppet?
+* support libvirt provider https://github.com/pradels/vagrant-libvirt/
