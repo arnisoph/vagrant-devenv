@@ -3,7 +3,7 @@
 export PATH=${PATH}:~/packer/
 
 packer_params=( \
-  "-var release=0.1" \
+  "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
   "-var-file=configs/debian-7/minimal.json" \
@@ -14,7 +14,7 @@ packer_params=( \
 
 
 packer_params=( \
-  "-var release=0.1" \
+  "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
   "-var-file=configs/centos-7/minimal.json" \
