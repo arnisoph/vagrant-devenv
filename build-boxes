@@ -17,6 +17,17 @@ packer_params=( \
   "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
+  "-var-file=configs/debian-8/minimal.json" \
+  "templates/debian-8/template.json"
+)
+
+[[ $1 == debian8 ]] && packer build ${packer_params[@]}
+
+
+packer_params=( \
+  "-var release=$(git describe --always --tag)" \
+  "-var headless=false" \
+  "-only=virtualbox" \
   "-var-file=configs/centos-7/minimal.json" \
   "templates/centos-7/template.json"
 )

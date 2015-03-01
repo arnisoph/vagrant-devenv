@@ -5,6 +5,9 @@ vagrant-devenv
 .. image:: http://img.shields.io/github/tag/bechtoldt/vagrant-devenv.svg
     :target: https://github.com/bechtoldt/vagrant-devenv/tags
 
+.. image:: http://issuestats.com/github/bechtoldt/vagrant-devenv/badge/issue
+    :target: http://issuestats.com/github/bechtoldt/vagrant-devenv
+
 .. image:: https://api.flattr.com/button/flattr-badge-large.png
     :target: https://flattr.com/submit/auto?user_id=bechtoldt&url=https%3A%2F%2Fgithub.com%2Fbechtoldt%2Fvagrant-devenv
 
@@ -36,6 +39,7 @@ Host Operating Systems:
 Guest Operating systems:
 
 * GNU/ Linux Debian 7
+* GNU/ Linux Debian 8
 * CentOS 7
 
 Vagrant providers:
