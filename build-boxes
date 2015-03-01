@@ -10,7 +10,7 @@ packer_params=( \
   "templates/debian-7/template.json"
 )
 
-[[ $1 == debian7 ]] && packer build ${packer_params[@]}
+[[ $1 == debian7 || $1 == all ]] && packer build ${packer_params[@]}
 
 
 packer_params=( \
@@ -21,7 +21,18 @@ packer_params=( \
   "templates/debian-8/template.json"
 )
 
-[[ $1 == debian8 ]] && packer build ${packer_params[@]}
+[[ $1 == debian8 || $1 == all ]] && packer build ${packer_params[@]}
+
+
+packer_params=( \
+  "-var release=$(git describe --always --tag)" \
+  "-var headless=false" \
+  "-only=virtualbox" \
+  "-var-file=configs/centos-6/minimal.json" \
+  "templates/centos-6/template.json"
+)
+
+[[ $1 == centos6 || $1 == all ]] && packer build ${packer_params[@]}
 
 
 packer_params=( \
@@ -32,4 +43,4 @@ packer_params=( \
   "templates/centos-7/template.json"
 )
 
-[[ $1 == centos7 ]] && packer build ${packer_params[@]}
+[[ $1 == centos7 || $1 == all ]] && packer build ${packer_params[@]}
