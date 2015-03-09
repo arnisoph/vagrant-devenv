@@ -125,6 +125,6 @@ Additional resources
 TODO
 ----
 
-* prepare salt?
-* prepare puppet?
+* install salt on demand
+* install puppet on demand
 * support libvirt provider https://github.com/pradels/vagrant-libvirt/
