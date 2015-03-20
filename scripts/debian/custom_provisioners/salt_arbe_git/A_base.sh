@@ -18,7 +18,8 @@ pillar_roots:
     - /srv/salt/pillar
 
 module_dirs:
-  - /srv/salt/_modules
+  - /srv/salt/_modules/common
+  - /srv/salt/_modules/formulas
 
 file_client: local
 EOF
