@@ -17,6 +17,17 @@ packer_params=( \
   "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
+  "-var-file=configs/debian-7/salt_arbe_git.json" \
+  "templates/debian-7/template.json"
+)
+
+[[ $1 == debian7_salt_arbe_git || $1 == all ]] && packer build ${packer_params[@]}
+
+
+packer_params=( \
+  "-var release=$(git describe --always --tag)" \
+  "-var headless=false" \
+  "-only=virtualbox" \
   "-var-file=configs/debian-8/minimal.json" \
   "templates/debian-8/template.json"
 )

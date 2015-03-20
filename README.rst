@@ -48,7 +48,7 @@ Vagrant providers:
 
 Vagrant provisioners:
 
-* Salt (or custom provisioner?)
+* Custom: salt_arbe_git
 
 
 Files & Directories
@@ -125,6 +125,5 @@ Additional resources
 TODO
 ----
 
-* install salt on demand
 * install puppet on demand
 * support libvirt provider https://github.com/pradels/vagrant-libvirt/
