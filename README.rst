@@ -34,12 +34,14 @@ Supported Platforms
 
 Host Operating Systems:
 
-* OS X 10.9.5
+* OS X 10.9
+* OS X 10.10
 
 Guest Operating systems:
 
 * GNU/ Linux Debian 7
 * GNU/ Linux Debian 8
+* CentOS 6
 * CentOS 7
 
 Vagrant providers:
@@ -48,7 +50,7 @@ Vagrant providers:
 
 Vagrant provisioners:
 
-* Custom: salt_arbe_git
+* See https://github.com/bechtoldt/vagrant-assets
 
 
 Files & Directories
@@ -113,7 +115,7 @@ Packer
 ''''''
 
 * set ``headless`` to "true" in your packer user variable file
-* build image with debug param ``-var debug_provision="yes"``, this causes a long sleep at the end of image provisioning so that you can log into the machine
+* build image with debug param ``-var debug_provision=yes``, this causes a long sleep at the end of image provisioning so that you can log into the machine
 
 
 Additional resources
@@ -125,5 +127,4 @@ Additional resources
 TODO
 ----
 
-* install puppet on demand
 * support libvirt provider https://github.com/pradels/vagrant-libvirt/

@@ -63,15 +63,26 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /tmp/packer-provision",
+        "find /tmp/packer-provision -type f -name '*.sh' -exec chmod +x {} \\;"
+      ]
+    },
+    {
       "type": "file",
-      "source": "scripts/debian",
-      "destination": "/tmp/packer-provision"
+      "source": "assets/scripts/provision/debian",
+      "destination": "/tmp/packer-provision/provision"
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/bootstrap/debian",
+      "destination": "/tmp/packer-provision/bootstrap"
     },
     {
       "type": "shell",
       "inline": [
-        "chmod 700 /tmp/packer-provision/*.sh",
-        "for f in /tmp/packer-provision/*.sh; do ${f}; done",
+        "for f in /tmp/packer-provision/bootstrap/*.sh; do ${f}; done",
         "rm -rf /tmp/*"
       ],
       "environment_vars": [

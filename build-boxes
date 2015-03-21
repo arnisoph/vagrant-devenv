@@ -3,6 +3,7 @@
 export PATH=${PATH}:~/packer/
 
 packer_params=( \
+  "-var debug_provision=no" \
   "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
@@ -14,6 +15,7 @@ packer_params=( \
 
 
 packer_params=( \
+  "-var debug_provision=no" \
   "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
@@ -25,6 +27,7 @@ packer_params=( \
 
 
 packer_params=( \
+  "-var debug_provision=no" \
   "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
@@ -36,6 +39,7 @@ packer_params=( \
 
 
 packer_params=( \
+  "-var debug_provision=no" \
   "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
@@ -47,6 +51,7 @@ packer_params=( \
 
 
 packer_params=( \
+  "-var debug_provision=no" \
   "-var release=$(git describe --always --tag)" \
   "-var headless=false" \
   "-only=virtualbox" \
