@@ -13,8 +13,8 @@
     "kickstart_file": "ks.cfg",
     "root_password": null,
     "http_directory": "templates/debian-7/public_html",
-    "debug_provision": "no",
-    "custom_provisioners": "helloworld"
+    "custom_provisioners": "helloworld",
+    "debug_provision": "no"
   },
   "builders": [
     {
@@ -65,8 +65,7 @@
     {
       "type": "shell",
       "inline": [
-        "mkdir -p /tmp/packer-provision",
-        "find /tmp/packer-provision -type f -name '*.sh' -exec chmod +x {} \\;"
+        "mkdir -p /tmp/packer-provision"
       ]
     },
     {
@@ -81,9 +80,8 @@
     },
     {
       "type": "shell",
-      "inline": [
-        "for f in /tmp/packer-provision/bootstrap/*.sh; do ${f}; done",
-        "rm -rf /tmp/*"
+      "scripts": [
+        "assets/scripts/bootstrap/bootstrap.sh"
       ],
       "environment_vars": [
         "ROOT_PASSWORD={{ user `root_password` }}",
