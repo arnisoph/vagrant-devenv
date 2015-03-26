@@ -14,6 +14,7 @@
     "root_password": null,
     "http_directory": "templates/debian-8/public_html",
     "custom_provisioners": "helloworld",
+    "custom_provisioners_context": "helloworld_params='foo,bar'",
     "debug_provision": "no"
   },
   "builders": [
@@ -89,7 +90,8 @@
         "ROOT_PASSWORD={{ user `root_password` }}",
         "DEBUG_PROVISION={{ user `debug_provision` }}",
         "SLEEP_SECONDS=133337",
-        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}"
+        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
+        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}"
       ]
     }
   ],
