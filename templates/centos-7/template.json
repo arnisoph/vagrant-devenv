@@ -13,6 +13,7 @@
     "kickstart_file": "ks.cfg",
     "root_password": null,
     "http_directory": "templates/centos-7/public_html",
+    "custom_provisioners_context": "helloworld_params='foo,bar'",
     "custom_provisioners": "helloworld",
     "debug_provision": "no"
   },
@@ -73,7 +74,8 @@
         "ROOT_PASSWORD={{ user `root_password` }}",
         "DEBUG_PROVISION={{ user `debug_provision` }}",
         "SLEEP_SECONDS=133337",
-        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}"
+        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
+        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}"
       ]
     }
   ],
