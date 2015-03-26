@@ -13,6 +13,7 @@
     "kickstart_file": "ks.cfg",
     "root_password": null,
     "http_directory": "templates/centos-7/public_html",
+    "custom_provisioners": "helloworld",
     "debug_provision": "no"
   },
   "builders": [
@@ -48,21 +49,31 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /tmp/packer-provision"
+      ]
+    },
+    {
       "type": "file",
-      "source": "scripts/rhel",
-      "destination": "/tmp/packer-provision"
+      "source": "assets/scripts/provision/rhel",
+      "destination": "/tmp/packer-provision/provision"
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/bootstrap/rhel",
+      "destination": "/tmp/packer-provision/bootstrap"
     },
     {
       "type": "shell",
-      "inline": [
-        "chmod 700 /tmp/packer-provision/*.sh",
-        "for f in /tmp/packer-provision/*.sh; do ${f}; done",
-        "rm -rf /tmp/*"
+      "scripts": [
+        "assets/scripts/bootstrap/bootstrap.sh"
       ],
       "environment_vars": [
         "ROOT_PASSWORD={{ user `root_password` }}",
         "DEBUG_PROVISION={{ user `debug_provision` }}",
-        "SLEEP_SECONDS=133337"
+        "SLEEP_SECONDS=133337",
+        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}"
       ]
     }
   ],
