@@ -1,0 +1,9 @@
+{
+  "box_name": "DEV_CentOS_70_salt_arbe_git",
+  "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e",
+  "headless": "true",
+  "iso_url": "http://ftp.hosteurope.de/mirror/centos.org/7/isos/x86_64/CentOS-7.0-1406-x86_64-Minimal.iso",
+  "iso_checksum": "e3afe3f1121d69c40cc23f0bafa05e5d",
+  "custom_provisioners": "saltstack_install_bootstrap",
+  "custom_provisioners_context": "saltstack_install_bootstrap_params='-M,-K,-g,https://github.com/bechtoldt/salt.git,git,2014.7-arbe'"
+}
