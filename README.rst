@@ -123,6 +123,9 @@ Additional resources
 
 * Test scripts: https://github.com/bechtoldt/vagrant-devenv-test
 
+.. image:: https://asciinema.org/a/18109.png
+    :target: https://asciinema.org/a/18109
+
 
 TODO
 ----
