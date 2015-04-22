@@ -27,6 +27,9 @@ packer_params=( "-var debug_provision=no" "-var release=$(git describe --always 
 packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=false" "-only=virtualbox" "-var-file=configs/centos-6/minimal.json" "templates/centos-6/template.json" )
 [[ $1 == centos6 || $1 == all ]] && packer build ${packer_params[@]}
 
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=false" "-only=virtualbox" "-var-file=configs/centos-6/puppet_generic.json" "templates/centos-6/template.json" )
+[[ $1 == centos6_puppet_generic || $1 == all ]] && packer build ${packer_params[@]}
+
 packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=false" "-only=virtualbox" "-var-file=configs/centos-7/minimal.json" "templates/centos-7/template.json" )
 [[ $1 == centos7 || $1 == all ]] && packer build ${packer_params[@]}
 
