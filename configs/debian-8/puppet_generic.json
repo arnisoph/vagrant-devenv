@@ -1,8 +1,8 @@
 {
-  "box_name": "DEV_Debian_80_min",
+  "box_name": "DEV_Debian_80_puppet_generic",
   "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e",
   "headless": "true",
   "iso_url": "http://cdimage.debian.org/cdimage/jessie_di_rc3/amd64/iso-cd/debian-jessie-DI-rc3-amd64-netinst.iso",
   "iso_checksum": "bfcaac8a13307ac1f2c2c2e34b642d73",
-  "iso_checksum": "2ab639aa971279f2cfbe45ea01a51529"
+  "custom_provisioners": "puppet_install_dist"
 }
