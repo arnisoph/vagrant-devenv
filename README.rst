@@ -58,17 +58,23 @@ Files & Directories
 
 ::
 
-    |-- Vagrantfile.template          # Default Vagrantfile for every Vagrant box
-    |-- configs/                      # Default user variable files for packer
-    |   `-- centos-7/
-    |-- scripts/                      # Scripts that are used for image provisioning
-    |   `-- rhel/
-    |-- shared/
-    |   `-- boxes/                    # Created Vagrant boxes will be placed here
-    `-- templates/
-        `-- centos-7/                 # A packer template directory
-            |-- public_html/
-            `-- template.json         # Packer template
+    $ tree -I '.git|.vagrant|.*\.swp|packer_cache' --matchdirs
+    .
+    ├── Vagrantfile.template          # Default Vagrantfile for every Vagrant box
+    ├── assets
+    │   ├── scripts                   # Scripts that are used for image provisioning
+    ├── build-boxes
+    ├── configs                       # Default user variable files for packer
+    │   ├── centos-7
+    │   │   ├── minimal.json
+    ├── shared                        # Created Vagrant boxes will be placed here
+    │   └── boxes
+    ├── templates
+    │   ├── centos-7                  # A packer template directory
+    │   │   ├── public_html
+    │   │   │   └── ks.cfg
+    │   │   └── template.json         # Packer template
+    └── update-docs
 
 
 Deploying a minimal Vagrant box
@@ -130,4 +136,4 @@ Additional resources
 TODO
 ----
 
-* support libvirt provider https://github.com/pradels/vagrant-libvirt/
+* support libvirt/ KVM provider https://github.com/pradels/vagrant-libvirt/
