@@ -4,6 +4,7 @@
 * improve debian templates
 * add assets git module
 * add custom provisioner helloworld and salt_arbe_git
+* add custom provisioner puppet_install_generic
 
 v0.4 (2015-03-20)
 -----------------
