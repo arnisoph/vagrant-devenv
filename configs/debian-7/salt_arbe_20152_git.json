@@ -1,9 +1,9 @@
 {
-  "box_name": "DEV_Debian_78_salt_arbe_git",
+  "box_name": "DEV_Debian_78_salt_arbe_20152_git",
   "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e",
   "headless": "true",
   "iso_url": "http://cdimage.debian.org/cdimage/release/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
   "iso_checksum": "a91fba5001cf0fbccb44a7ae38c63b6e",
   "custom_provisioners": "saltstack_install_bootstrap",
-  "custom_provisioners_context": "saltstack_install_bootstrap_params='-M,-K,-g,https://github.com/bechtoldt/salt.git,git,2014.7-arbe'"
+  "custom_provisioners_context": "saltstack_install_bootstrap_params='-M,-K,-g,https://github.com/bechtoldt/salt.git,git,2015.2-arbe'"
 }
