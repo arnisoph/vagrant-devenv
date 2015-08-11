@@ -87,7 +87,7 @@ Create the base box
 
     # Clone this Git repository (vagrant-devenv) to your local workstation
     mkdir -p ~/dev/vagrant_hacking/ && cd ~/dev/vagrant_hacking/
-    git clone https://github.com/bechtoldt/vagrant-devenv.git
+    git clone https://github.com/bechtoldt/vagrant-devenv.git --recursive
     cd vagrant-devenv/
 
     # Run the following to use some sane default:
