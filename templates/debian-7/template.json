@@ -10,7 +10,6 @@
     "ostype_vmware": "debian7-64",
     "box_name": null,
     "headless": null,
-    "kickstart_file": "ks.cfg",
     "root_password": null,
     "http_directory": "templates/debian-7/public_html",
     "custom_provisioners": "helloworld",
