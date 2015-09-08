@@ -23,7 +23,7 @@ Requirements
 
 You need:
 
-* basic packer/ vagrant knowledge (RFTM skills are sufficient)
+* basic packer/ vagrant knowledge (RTFM skills are sufficient)
 * Internet connection (at least for the initial creation of your vagrant boxes)
 * Vagrant >= 1.6.5 (``$ vagrant -v``)
 * Packer >= v0.7.5 (``$ packer version``)
