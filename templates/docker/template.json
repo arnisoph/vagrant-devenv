@@ -9,7 +9,6 @@
     "debug_provision": "no",
     "manage_sources_list": "",
     "os": null,
-    "os_codename": "",
     "release": "latest",
     "root_password": ""
   },
@@ -49,8 +48,7 @@
         "SLEEP_SECONDS=133337",
         "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
         "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}",
-        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}",
-        "OS_CODENAME={{ user `os_codename` }}"
+        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}"
       ]
     }
   ],
