@@ -1,6 +1,6 @@
 {
   "variables": {
-    "base_image": "debian:wheezy",
+    "base_image": null,
     "box_name": null,
     "box_repo": null,
     "boxes_directory": "shared/boxes",
@@ -8,9 +8,10 @@
     "custom_provisioners_context": "helloworld_params='foo,bar'",
     "debug_provision": "no",
     "manage_sources_list": "",
-    "os_codename": "wheezy",
+    "os": null,
+    "os_codename": "",
     "release": "latest",
-    "root_password": null
+    "root_password": ""
   },
   "builders": [
     {
@@ -28,12 +29,12 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/debian/",
+      "source": "assets/scripts/provision/{{ user `os` }}/",
       "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/debian/",
+      "source": "assets/scripts/bootstrap/{{ user `os` }}/",
       "destination": "/tmp/packer-provision/bootstrap/"
     },
     {

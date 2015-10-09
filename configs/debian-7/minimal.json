@@ -4,5 +4,7 @@
   "iso_checksum": "774d1fc8c5364e63b22242c33a89c1a3",
   "iso_url": "http://cdimage.debian.org/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
   "manage_sources_list": "true",
+  "os": "debian",
+  "os_codename": "wheezy",
   "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e"
 }

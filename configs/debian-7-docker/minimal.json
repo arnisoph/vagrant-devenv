@@ -1,6 +1,9 @@
 {
+  "base_image": "debian:wheezy",
   "box_name": "dev_debian_78_min",
   "box_repo": "bechtoldt",
   "manage_sources_list": "true",
+  "os": "debian",
+  "os_codename": "wheezy",
   "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e"
 }

@@ -4,5 +4,6 @@
   "headless": "true",
   "iso_checksum": "eb3c8be6ab668e6d83a118323a789e6c",
   "iso_url": "http://ftp.hosteurope.de/mirror/centos.org/6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
+  "os": "rhel",
   "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e"
 }

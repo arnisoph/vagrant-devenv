@@ -17,7 +17,7 @@
     "ostype_vmware": "debian7-64",
     "output_directory": "templates/debian-8/images",
     "release": null,
-    "root_password": null
+    "root_password": ""
   },
   "builders": [
     {
