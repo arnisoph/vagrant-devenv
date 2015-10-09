@@ -2,6 +2,7 @@
   "variables": {
     "base_image": "debian:wheezy",
     "box_name": null,
+    "box_repo": null,
     "boxes_directory": "shared/boxes",
     "custom_provisioners": "helloworld",
     "custom_provisioners_context": "helloworld_params='foo,bar'",
@@ -50,11 +51,11 @@
   "post-processors": [
     {
       "type": "docker-save",
-      "port_path": "{{ user `boxes_directory` }}/{{ user `box_name` }}.tar"
+      "path": "{{ user `boxes_directory` }}/{{ user `box_name` }}-{{ .Provider }}-{{ user `release` }}.box"
     },
     {
-      "type": "docker-import",
-      "repository": "{{ user `box_name_full` }}",
+      "type": "docker-tag",
+      "repository": "{{ user `box_repo` }}/{{ user `box_name` }}",
       "tag": "{{ user `release` }}"
     }
   ]
