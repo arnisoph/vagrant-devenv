@@ -1,6 +1,6 @@
 [Unreleased] ([unreleased])
 ---------------------------
-None
+* added docker template debian-7-docker
 
 v1.1.0 (2015-10-09)
 -------------------

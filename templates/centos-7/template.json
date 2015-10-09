@@ -11,6 +11,8 @@
     "iso_checksum": null,
     "iso_checksum_type": "md5",
     "iso_url": null,
+    "manage_sources_list": "",
+    "os_codename": "",
     "ostype_vbox": "RedHat_64",
     "ostype_vmware": "centos-64",
     "output_directory": "templates/centos-7/images",

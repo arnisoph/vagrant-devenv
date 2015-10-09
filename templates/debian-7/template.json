@@ -11,6 +11,8 @@
     "iso_checksum": null,
     "iso_checksum_type": "md5",
     "iso_url": null,
+    "manage_sources_list": "",
+    "os_codename": "wheezy",
     "ostype_vbox": "Debian_64",
     "ostype_vmware": "debian7-64",
     "output_directory": "templates/debian-7/images",
@@ -89,7 +91,9 @@
         "DEBUG_PROVISION={{ user `debug_provision` }}",
         "SLEEP_SECONDS=133337",
         "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
-        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}"
+        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}",
+        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}",
+        "OS_CODENAME={{ user `os_codename` }}"
       ]
     }
   ],

@@ -7,6 +7,8 @@
     "custom_provisioners": "helloworld",
     "custom_provisioners_context": "helloworld_params='foo,bar'",
     "debug_provision": "no",
+    "manage_sources_list": "",
+    "os_codename": "wheezy",
     "release": "latest",
     "root_password": null
   },
@@ -44,7 +46,9 @@
         "DEBUG_PROVISION={{ user `debug_provision` }}",
         "SLEEP_SECONDS=133337",
         "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
-        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}"
+        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}",
+        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}",
+        "OS_CODENAME={{ user `os_codename` }}"
       ]
     }
   ],
@@ -52,11 +56,6 @@
     {
       "type": "docker-save",
       "path": "{{ user `boxes_directory` }}/{{ user `box_name` }}-docker-{{ user `release` }}.box"
-    },
-    {
-      "type": "docker-tag",
-      "repository": "{{ user `box_repo` }}/{{ user `box_name` }}",
-      "tag": "{{ user `release` }}"
     }
   ]
 }
