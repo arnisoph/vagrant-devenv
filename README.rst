@@ -2,14 +2,21 @@
 vagrant-devenv
 ==============
 
-.. image:: http://img.shields.io/github/tag/bechtoldt/vagrant-devenv.svg
-    :target: https://github.com/bechtoldt/vagrant-devenv/tags
+.. image:: https://img.shields.io/badge/donate-flattr-red.svg
+    :alt: Donate via flattr
+    :target: https://flattr.com/profile/bechtoldt
 
-.. image:: http://issuestats.com/github/bechtoldt/vagrant-devenv/badge/issue
-    :target: http://issuestats.com/github/bechtoldt/vagrant-devenv
+.. image:: https://img.shields.io/gratipay/bechtoldt.svg
+    :alt: Donate via Gratipay
+    :target: https://www.gratipay.com/bechtoldt/
 
-.. image:: https://api.flattr.com/button/flattr-badge-large.png
-    :target: https://flattr.com/submit/auto?user_id=bechtoldt&url=https%3A%2F%2Fgithub.com%2Fbechtoldt%2Fvagrant-devenv
+.. image:: https://img.shields.io/badge/license-Apache--2.0-blue.svg
+    :alt: Apache-2.0-licensed
+    :target: https://github.com/bechtoldt/vagrant-devenv/blob/master/LICENSE
+
+.. image:: https://img.shields.io/badge/chat-gitter-brightgreen.svg
+    :alt: Join Gitter Chat
+    :target: https://gitter.im/bechtoldt/vagrant-devenv?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
 Environment setup using Vagrant for infrastructure hacking and development
 
@@ -50,7 +57,7 @@ Vagrant providers:
 
 Vagrant provisioners:
 
-* See https://github.com/bechtoldt/vagrant-assets
+* See `assets/ <https://github.com/bechtoldt/vagrant-assets>`_
 
 
 Files & Directories
@@ -120,7 +127,7 @@ following steps:
 Packer
 ''''''
 
-* set ``headless`` to "true" in your packer user variable file
+* set ``headless`` to "false" in your packer user variable file
 * build image with debug param ``-var debug_provision=yes``, this causes a long sleep at the end of image provisioning so that you can log into the machine
 
 
@@ -131,9 +138,3 @@ Additional resources
 
 .. image:: https://asciinema.org/a/18109.png
     :target: https://asciinema.org/a/18109
-
-
-TODO
-----
-
-* support libvirt/ KVM provider https://github.com/pradels/vagrant-libvirt/
