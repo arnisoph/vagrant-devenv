@@ -28,12 +28,12 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/debian/",
+      "source": "assets/scripts/provision/debian",
       "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/debian/",
+      "source": "assets/scripts/bootstrap/debian",
       "destination": "/tmp/packer-provision/bootstrap/"
     },
     {

@@ -59,12 +59,12 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/rhel/",
+      "source": "assets/scripts/provision/rhel",
       "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/rhel/",
+      "source": "assets/scripts/bootstrap/rhel",
       "destination": "/tmp/packer-provision/bootstrap/"
     },
     {
