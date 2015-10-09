@@ -1,0 +1,61 @@
+{
+  "variables": {
+    "base_image": "debian:wheezy",
+
+    "iso_url": null,
+    "iso_checksum": null,
+    "iso_checksum_type": "md5",
+    "release": null,
+    "output_directory": "templates/debian-7/images",
+    "boxes_directory": "shared/boxes",
+    "ostype_vbox": "Debian_64",
+    "ostype_vmware": "debian7-64",
+    "box_name": null,
+    "headless": null,
+    "root_password": null,
+    "http_directory": "templates/debian-7/public_html",
+    "http_config_name": "preseed.cfg",
+    "custom_provisioners": "helloworld",
+    "custom_provisioners_context": "helloworld_params='foo,bar'",
+    "debug_provision": "no"
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "commit": true,
+      "discard": true,
+      "image": "{{ user `base_image` }}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /tmp/packer-provision"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/provision/debian",
+      "destination": "/tmp/packer-provision/provision"
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/bootstrap/debian",
+      "destination": "/tmp/packer-provision/bootstrap"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "assets/scripts/bootstrap/bootstrap.sh"
+      ],
+      "environment_vars": [
+        "ROOT_PASSWORD={{ user `root_password` }}",
+        "DEBUG_PROVISION={{ user `debug_provision` }}",
+        "SLEEP_SECONDS=133337",
+        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
+        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}"
+      ]
+    }
+  ]
+}

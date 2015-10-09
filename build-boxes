@@ -13,6 +13,9 @@ packer_params=( "-var debug_provision=no" "-var release=$(git describe --always 
 packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=false" "-only=virtualbox" "-var-file=configs/debian-7/minimal_backports.json" "templates/debian-7/template.json" )
 [[ $1 == debian7_bpo || $1 == all ]] && packer build ${packer_params[@]}
 
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=false" "-only=virtualbox" "-var-file=configs/debian-7-docker/minimal.json" "templates/debian-7-docker/template.json" )
+[[ $1 == debian7_docker || $1 == all ]] && packer build ${packer_params[@]}
+
 packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/minimal.json" "templates/debian-8/template.json" )
 [[ $1 == debian8 || $1 == all ]] && packer build ${packer_params[@]}
 
