@@ -2,6 +2,10 @@
 ---------------------------
 None
 
+v1.1.0 (2015-10-09)
+-------------------
+* added preseed backports template
+
 v1.0.0 (2015-04-22)
 -------------------
 * rename saltstack_install_arbe_git to saltstack_install_bootstrap

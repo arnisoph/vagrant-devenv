@@ -4,5 +4,5 @@
   "headless": "true",
   "iso_url": "http://cdimage.debian.org/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
   "iso_checksum": "774d1fc8c5364e63b22242c33a89c1a3",
-  "preseed_config_name": "preseed_backports.cfg"
+  "http_config_name": "preseed_backports.cfg"
 }

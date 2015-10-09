@@ -127,7 +127,7 @@ following steps:
 Packer
 ''''''
 
-* set ``headless`` to "false" in your packer user variable file
+* set ``headless`` to ``false`` in your packer user variable file
 * build image with debug param ``-var debug_provision=yes``, this causes a long sleep at the end of image provisioning so that you can log into the machine
 
 

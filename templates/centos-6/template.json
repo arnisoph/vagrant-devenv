@@ -10,7 +10,7 @@
     "ostype_vmware": "centos-64",
     "box_name": null,
     "headless": null,
-    "kickstart_file": "ks.cfg",
+    "http_config_name": "ks.cfg",
     "root_password": null,
     "http_directory": "templates/centos-6/public_html",
     "custom_provisioners": "helloworld",
@@ -37,7 +37,7 @@
       "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
       "disk_size": 25000,
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `kickstart_file` }}<enter>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `http_config_name` }}<enter>"
       ],
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "1024"],

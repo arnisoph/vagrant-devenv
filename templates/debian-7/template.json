@@ -12,7 +12,7 @@
     "headless": null,
     "root_password": null,
     "http_directory": "templates/debian-7/public_html",
-    "preseed_config_name": "preseed.cfg",
+    "http_config_name": "preseed.cfg",
     "custom_provisioners": "helloworld",
     "custom_provisioners_context": "helloworld_params='foo,bar'",
     "debug_provision": "no"
@@ -39,7 +39,7 @@
       "boot_command": [
         "<esc><wait>",
         "install ",
-        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `preseed_config_name` }} ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `http_config_name` }} ",
         "debian-installer=en_US ",
         "auto ",
         "locale=en_US ",
