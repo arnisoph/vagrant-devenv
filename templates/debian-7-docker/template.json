@@ -54,8 +54,9 @@
   ],
   "post-processors": [
     {
-      "type": "docker-save",
-      "path": "{{ user `boxes_directory` }}/{{ user `box_name` }}-docker-{{ user `release` }}.tar"
+      "type": "docker-tag",
+      "repository": "{{ user `box_repo` }}/{{ user `box_name` }}",
+      "tag": "{{ user `release` }}"
     }
   ]
 }
