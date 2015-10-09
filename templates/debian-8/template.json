@@ -1,21 +1,21 @@
 {
   "variables": {
-    "iso_url": null,
-    "iso_checksum": null,
-    "iso_checksum_type": "md5",
-    "release": null,
-    "output_directory": "templates/debian-8/images",
-    "boxes_directory": "shared/boxes",
-    "ostype_vbox": "Debian_64",
-    "ostype_vmware": "debian7-64",
     "box_name": null,
-    "headless": null,
-    "root_password": null,
-    "http_directory": "templates/debian-8/public_html",
-    "http_config_name": "preseed.cfg",
+    "boxes_directory": "shared/boxes",
     "custom_provisioners": "helloworld",
     "custom_provisioners_context": "helloworld_params='foo,bar'",
-    "debug_provision": "no"
+    "debug_provision": "no",
+    "headless": null,
+    "http_config_name": "preseed.cfg",
+    "http_directory": "templates/debian-8/public_html",
+    "iso_checksum": null,
+    "iso_checksum_type": "md5",
+    "iso_url": null,
+    "ostype_vbox": "Debian_64",
+    "ostype_vmware": "debian7-64",
+    "output_directory": "templates/debian-8/images",
+    "release": null,
+    "root_password": null
   },
   "builders": [
     {
@@ -73,13 +73,13 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/debian",
-      "destination": "/tmp/packer-provision/provision"
+      "source": "assets/scripts/provision/debian/",
+      "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/debian",
-      "destination": "/tmp/packer-provision/bootstrap"
+      "source": "assets/scripts/bootstrap/debian/",
+      "destination": "/tmp/packer-provision/bootstrap/"
     },
     {
       "type": "shell",

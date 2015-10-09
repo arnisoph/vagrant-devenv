@@ -1,30 +1,19 @@
 {
   "variables": {
     "base_image": "debian:wheezy",
-
-    "iso_url": null,
-    "iso_checksum": null,
-    "iso_checksum_type": "md5",
-    "release": null,
-    "output_directory": "templates/debian-7/images",
-    "boxes_directory": "shared/boxes",
-    "ostype_vbox": "Debian_64",
-    "ostype_vmware": "debian7-64",
     "box_name": null,
-    "headless": null,
-    "root_password": null,
-    "http_directory": "templates/debian-7/public_html",
-    "http_config_name": "preseed.cfg",
+    "boxes_directory": "shared/boxes",
     "custom_provisioners": "helloworld",
     "custom_provisioners_context": "helloworld_params='foo,bar'",
-    "debug_provision": "no"
+    "debug_provision": "no",
+    "release": "latest",
+    "root_password": null
   },
   "builders": [
     {
       "type": "docker",
-      "commit": true,
-      "discard": true,
-      "image": "{{ user `base_image` }}"
+      "image": "{{ user `base_image` }}",
+      "commit": true
     }
   ],
   "provisioners": [
@@ -36,13 +25,13 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/debian",
-      "destination": "/tmp/packer-provision/provision"
+      "source": "assets/scripts/provision/debian/",
+      "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/debian",
-      "destination": "/tmp/packer-provision/bootstrap"
+      "source": "assets/scripts/bootstrap/debian/",
+      "destination": "/tmp/packer-provision/bootstrap/"
     },
     {
       "type": "shell",
@@ -56,6 +45,17 @@
         "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
         "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}"
       ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "docker-save",
+      "port_path": "{{ user `boxes_directory` }}/{{ user `box_name` }}.tar"
+    },
+    {
+      "type": "docker-import",
+      "repository": "{{ user `box_name_full` }}",
+      "tag": "{{ user `release` }}"
     }
   ]
 }

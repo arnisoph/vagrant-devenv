@@ -1,21 +1,21 @@
 {
   "variables": {
-    "iso_url": null,
-    "iso_checksum": null,
-    "iso_checksum_type": "md5",
-    "release": null,
-    "output_directory": "templates/centos-7/images",
-    "boxes_directory": "shared/boxes",
-    "ostype_vbox": "RedHat_64",
-    "ostype_vmware": "centos-64",
     "box_name": null,
+    "boxes_directory": "shared/boxes",
+    "custom_provisioners": "helloworld",
+    "custom_provisioners_context": "helloworld_params='foo,bar'",
+    "debug_provision": "no",
     "headless": null,
     "http_config_name": "ks.cfg",
-    "root_password": null,
     "http_directory": "templates/centos-7/public_html",
-    "custom_provisioners_context": "helloworld_params='foo,bar'",
-    "custom_provisioners": "helloworld",
-    "debug_provision": "no"
+    "iso_checksum": null,
+    "iso_checksum_type": "md5",
+    "iso_url": null,
+    "ostype_vbox": "RedHat_64",
+    "ostype_vmware": "centos-64",
+    "output_directory": "templates/centos-7/images",
+    "release": null,
+    "root_password": null
   },
   "builders": [
     {
@@ -57,13 +57,13 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/rhel",
-      "destination": "/tmp/packer-provision/provision"
+      "source": "assets/scripts/provision/rhel/",
+      "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/rhel",
-      "destination": "/tmp/packer-provision/bootstrap"
+      "source": "assets/scripts/bootstrap/rhel/",
+      "destination": "/tmp/packer-provision/bootstrap/"
     },
     {
       "type": "shell",
