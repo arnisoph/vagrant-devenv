@@ -17,7 +17,8 @@
     {
       "type": "docker",
       "image": "{{ user `base_image` }}",
-      "commit": true
+      "commit": true,
+      "pull": false
     }
   ],
   "provisioners": [
