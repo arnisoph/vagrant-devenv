@@ -7,39 +7,39 @@ export PATH=${PATH}:~/packer/
 #
 
 # Minimal
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/minimal.json" "templates/debian-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/minimal.json" "templates/debian-7/generic.json" )
 [[ $1 == debian7 || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/minimal_backports.json" "templates/debian-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/minimal_backports.json" "templates/debian-7/generic.json" )
 [[ $1 == debian7_bpo || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)"                      "-only=docker"     "-var-file=configs/debian-7-docker/minimal.json" "templates/docker/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)"                      "-only=docker"     "-var-file=configs/debian-7-docker/minimal.json" "templates/docker/generic.json" )
 [[ $1 == debian7_docker || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/minimal.json" "templates/debian-8/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/minimal.json" "templates/debian-8/generic.json" )
 [[ $1 == debian8 || $1 == all ]] && packer build ${packer_params[@]}
 
 # Salt
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/salt_generic.json" "templates/debian-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/salt_generic.json" "templates/debian-7/generic.json" )
 [[ $1 == debian7_salt_generic || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/salt_arbe_20147_git.json" "templates/debian-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/salt_arbe_20147_git.json" "templates/debian-7/generic.json" )
 [[ $1 == debian7_salt_arbe_20147_git || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/salt_arbe_20152_git.json" "templates/debian-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/salt_arbe_20152_git.json" "templates/debian-7/generic.json" )
 [[ $1 == debian7_salt_arbe_20152_git || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/salt_arbe_20147_git.json" "templates/debian-8/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/salt_arbe_20147_git.json" "templates/debian-8/generic.json" )
 [[ $1 == debian8_salt_arbe_20147_git || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/salt_arbe_20152_git.json" "templates/debian-8/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/salt_arbe_20152_git.json" "templates/debian-8/generic.json" )
 [[ $1 == debian8_salt_arbe_20152_git || $1 == all ]] && packer build ${packer_params[@]}
 
 # Puppet
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/puppet_generic.json" "templates/debian-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-7/puppet_generic.json" "templates/debian-7/generic.json" )
 [[ $1 == debian7_puppet_generic || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/puppet_generic.json" "templates/debian-8/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/debian-8/puppet_generic.json" "templates/debian-8/generic.json" )
 [[ $1 == debian8_puppet_generic || $1 == all ]] && packer build ${packer_params[@]}
 
 #
@@ -47,26 +47,26 @@ packer_params=( "-var debug_provision=no" "-var release=$(git describe --always 
 #
 
 # Minimal
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-6/minimal.json" "templates/centos-6/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-6/minimal.json" "templates/centos-6/generic.json" )
 [[ $1 == centos6 || $1 == all ]] && packer build ${packer_params[@]}
 
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/minimal.json" "templates/centos-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/minimal.json" "templates/centos-7/generic.json" )
 [[ $1 == centos7 || $1 == all ]] && packer build ${packer_params[@]}
 
 # Salt
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/salt_generic.json" "templates/centos-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/salt_generic.json" "templates/centos-7/generic.json" )
 [[ $1 == centos7_salt_generic || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/salt_arbe_20147_git.json" "templates/centos-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/salt_arbe_20147_git.json" "templates/centos-7/generic.json" )
 [[ $1 == centos7_salt_arbe_20147_git || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/salt_arbe_20152_git.json" "templates/centos-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/salt_arbe_20152_git.json" "templates/centos-7/generic.json" )
 [[ $1 == centos7_salt_arbe_20152_git || $1 == all ]] && packer build ${packer_params[@]}
 
 # Puppet
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-6/puppet_generic.json" "templates/centos-6/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-6/puppet_generic.json" "templates/centos-6/generic.json" )
 [[ $1 == centos6_puppet_generic || $1 == all ]] && packer build ${packer_params[@]}
 
-packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/puppet_generic.json" "templates/centos-7/template.json" )
+packer_params=( "-var debug_provision=no" "-var release=$(git describe --always --tag)" "-var headless=true" "-only=virtualbox" "-var-file=configs/centos-7/puppet_generic.json" "templates/centos-7/generic.json" )
 [[ $1 == centos7_puppet_generic || $1 == all ]] && packer build ${packer_params[@]}
