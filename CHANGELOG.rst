@@ -1,6 +1,7 @@
 [Unreleased] ([unreleased])
 ---------------------------
 * added docker template debian-7-docker
+* prepare all configs for Atlas building/hosting
 
 v1.1.0 (2015-10-09)
 -------------------

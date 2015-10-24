@@ -9,9 +9,9 @@
     "headless": "true",
     "http_config_name": "ks.cfg",
     "http_directory": "templates/centos-6/public_html",
-    "iso_checksum": "2342bc5ea72fc028972aa0f21cee28b4",
+    "iso_checksum": "eb3c8be6ab668e6d83a118323a789e6c",
     "iso_checksum_type": "md5",
-    "iso_url": "http://mirror.nsc.liu.se/centos-store/6.6/isos/x86_64/CentOS-6.6-x86_64-netinstall.iso",
+    "iso_url": "http://mirror.nsc.liu.se/centos-store/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
     "manage_sources_list": "",
     "os": "rhel",
     "ostype_vbox": "RedHat_64",
@@ -60,12 +60,12 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/rhel",
+      "source": "assets/scripts/provision/{{ user `os` }}",
       "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/rhel",
+      "source": "assets/scripts/bootstrap/{{ user `os` }}",
       "destination": "/tmp/packer-provision/bootstrap/"
     },
     {

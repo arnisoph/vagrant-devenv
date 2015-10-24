@@ -60,12 +60,12 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/rhel",
+      "source": "assets/scripts/provision/{{ user `os` }}",
       "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/rhel",
+      "source": "assets/scripts/bootstrap/{{ user `os` }}",
       "destination": "/tmp/packer-provision/bootstrap/"
     },
     {

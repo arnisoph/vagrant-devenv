@@ -1,22 +1,24 @@
 {
   "variables": {
-    "box_name": null,
+    "atlas_username": "{{ env `ATLAS_USERNAME` }}",
+    "box_name": "debian-7.9-puppet-generic",
     "boxes_directory": "shared/boxes",
-    "custom_provisioners": "helloworld",
-    "custom_provisioners_context": "helloworld_params='foo,bar'",
+    "custom_provisioners": "puppet_install_dist",
+    "custom_provisioners_context": "",
     "debug_provision": "no",
-    "headless": null,
-    "http_config_name": "preseed.cfg",
+    "headless": "true",
+    "http_config_name": "preseed_backports.cfg",
     "http_directory": "templates/debian-7/public_html",
-    "iso_checksum": null,
+    "iso_checksum": "774d1fc8c5364e63b22242c33a89c1a3",
     "iso_checksum_type": "md5",
-    "iso_url": null,
-    "manage_sources_list": "",
+    "iso_url": "http://cdimage.debian.org/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
+    "manage_sources_list": "true",
+    "os": "debian",
     "ostype_vbox": "Debian_64",
     "ostype_vmware": "debian7-64",
     "output_directory": "templates/debian-7/images",
-    "release": null,
-    "root_password": ""
+    "release": "0.1.1",
+    "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e"
   },
   "builders": [
     {
@@ -56,7 +58,7 @@
       ],
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "1024"],
-        ["modifyvm", "{{.Name}}", "--cpus", "2"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"],
         ["modifyvm", "{{.Name}}", "--usb", "off"],
         ["modifyvm", "{{.Name}}", "--usbehci", "off"],
         ["modifyvm", "{{.Name}}", "--audio", "none"]
@@ -96,11 +98,31 @@
     }
   ],
   "post-processors": [
-    {
-      "type": "vagrant",
-      "keep_input_artifact": false,
-      "output": "{{ user `boxes_directory` }}/{{ user `box_name` }}-{{ .Provider }}-{{ user `release` }}.box",
-      "vagrantfile_template": "Vagrantfile.template"
-    }
-  ]
+    [
+      {
+        "type": "vagrant",
+        "keep_input_artifact": false,
+        "output": "{{ user `boxes_directory` }}/{{ user `box_name` }}-{{ .Provider }}-{{ user `release` }}.box",
+        "vagrantfile_template": "Vagrantfile.template"
+      },
+      {
+        "type": "atlas",
+        "artifact": "{{ user `atlas_username` }}/{{ user `box_name` }}",
+        "artifact_type": "vagrant.box",
+        "metadata": {
+          "provider": "virtualbox",
+          "version": "{{ user `release` }}"
+        }
+      }
+    ]
+  ],
+  "push": {
+    "name": "",
+    "base_dir": "../../",
+    "exclude": [
+      "packer_cache/*",
+      "shared/boxes/*",
+      ".git/*"
+    ]
+  }
 }

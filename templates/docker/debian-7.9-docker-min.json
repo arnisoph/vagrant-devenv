@@ -1,0 +1,63 @@
+{
+  "variables": {
+    "atlas_username": "{{ env `ATLAS_USERNAME` }}",
+    "base_image": "debian:wheezy",
+    "box_name": "debian-7.9-docker-min",
+    "box_repo": "bechtoldt",
+    "boxes_directory": "shared/boxes",
+    "custom_provisioners": "",
+    "custom_provisioners_context": "",
+    "debug_provision": "no",
+    "manage_sources_list": "true",
+    "os": "debian",
+    "release": "0.1.0",
+    "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e"
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "{{ user `base_image` }}",
+      "commit": true,
+      "pull": false
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /tmp/packer-provision"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/provision/{{ user `os` }}/",
+      "destination": "/tmp/packer-provision/provision/"
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/bootstrap/{{ user `os` }}/",
+      "destination": "/tmp/packer-provision/bootstrap/"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "assets/scripts/bootstrap/bootstrap.sh"
+      ],
+      "environment_vars": [
+        "ROOT_PASSWORD={{ user `root_password` }}",
+        "DEBUG_PROVISION={{ user `debug_provision` }}",
+        "SLEEP_SECONDS=133337",
+        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
+        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}",
+        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "docker-tag",
+      "repository": "{{ user `box_repo` }}/{{ user `box_name` }}",
+      "tag": "{{ user `release` }}"
+    }
+  ]
+}
