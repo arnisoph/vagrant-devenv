@@ -71,9 +71,6 @@ Files & Directories
     ├── assets
     │   ├── scripts                   # Scripts that are used for image provisioning
     ├── build-boxes
-    ├── configs                       # Default user variable files for packer
-    │   ├── centos-7
-    │   │   ├── minimal.json
     ├── shared                        # Created Vagrant boxes will be placed here
     │   └── boxes
     ├── templates
