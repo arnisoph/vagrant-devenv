@@ -1,0 +1,114 @@
+{
+  "variables": {
+    "atlas_username": "{{ env `ATLAS_USERNAME` }}",
+    "box_name": "centos-6.6-min",
+    "boxes_directory": "shared/boxes",
+    "custom_provisioners": "",
+    "custom_provisioners_context": "",
+    "debug_provision": "no",
+    "headless": "true",
+    "http_config_name": "ks.cfg",
+    "http_directory": "templates/centos-6/public_html",
+    "iso_checksum": "2342bc5ea72fc028972aa0f21cee28b4",
+    "iso_checksum_type": "md5",
+    "iso_url": "http://mirror.nsc.liu.se/centos-store/6.6/isos/x86_64/CentOS-6.6-x86_64-netinstall.iso",
+    "manage_sources_list": "",
+    "os": "rhel",
+    "ostype_vbox": "RedHat_64",
+    "ostype_vmware": "centos-64",
+    "output_directory": "templates/centos-6/images",
+    "release": "0.1.0",
+    "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e"
+  },
+  "builders": [
+    {
+      "name": "virtualbox",
+      "type": "virtualbox-iso",
+      "http_directory": "{{ user `http_directory` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "guest_os_type": "{{ user `ostype_vbox` }}",
+      "guest_additions_path": "/tmp/VBoxGuestAdditions_{{ .Version }}.iso",
+      "virtualbox_version_file": "/etc/vbox_version",
+      "output_directory": "{{ user `output_directory` }}",
+      "headless": "{{ user `headless` }}",
+      "ssh_username": "root",
+      "ssh_password": "z1ftLAU6PYKxB3_RRbzyax5O24sflB1S",
+      "ssh_wait_timeout": "30m",
+      "boot_wait": "5s",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+      "disk_size": 25000,
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `http_config_name` }}<enter>"
+      ],
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"],
+        ["modifyvm", "{{.Name}}", "--usb", "off"],
+        ["modifyvm", "{{.Name}}", "--usbehci", "off"],
+        ["modifyvm", "{{.Name}}", "--audio", "none"]
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /tmp/packer-provision"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/provision/rhel",
+      "destination": "/tmp/packer-provision/provision/"
+    },
+    {
+      "type": "file",
+      "source": "assets/scripts/bootstrap/rhel",
+      "destination": "/tmp/packer-provision/bootstrap/"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "assets/scripts/bootstrap/bootstrap.sh"
+      ],
+      "environment_vars": [
+        "ROOT_PASSWORD={{ user `root_password` }}",
+        "DEBUG_PROVISION={{ user `debug_provision` }}",
+        "SLEEP_SECONDS=133337",
+        "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
+        "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}",
+        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}"
+      ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "vagrant",
+        "keep_input_artifact": false,
+        "output": "{{ user `boxes_directory` }}/{{ user `box_name` }}-{{ .Provider }}-{{ user `release` }}.box",
+        "vagrantfile_template": "Vagrantfile.template"
+      },
+      {
+        "type": "atlas",
+        "artifact": "{{ user `atlas_username` }}/{{ user `box_name` }}",
+        "artifact_type": "vagrant.box",
+        "metadata": {
+          "provider": "virtualbox",
+          "version": "{{ user `release` }}"
+        }
+      }
+    ]
+  ],
+  "push": {
+    "name": "",
+    "base_dir": "../../",
+    "exclude": [
+      "packer_cache/*",
+      "shared/boxes/*",
+      ".git/*"
+    ]
+  }
+}

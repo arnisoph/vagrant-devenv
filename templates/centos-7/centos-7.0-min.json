@@ -1,22 +1,23 @@
 {
   "variables": {
-    "box_name": "debian-7.9-minimal",
+    "atlas_username": "{{ env `ATLAS_USERNAME` }}",
+    "box_name": "centos-7.0-min",
     "boxes_directory": "shared/boxes",
     "custom_provisioners": "",
     "custom_provisioners_context": "",
     "debug_provision": "no",
     "headless": "true",
-    "http_config_name": "preseed.cfg",
-    "http_directory": "templates/debian-7/public_html",
-    "iso_checksum": "774d1fc8c5364e63b22242c33a89c1a3",
+    "http_config_name": "ks.cfg",
+    "http_directory": "templates/centos-7/public_html",
+    "iso_checksum": "d07ab3e615c66a8b2e9a50f4852e6a77",
     "iso_checksum_type": "md5",
-    "iso_url": "http://cdimage.debian.org/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
-    "manage_sources_list": "true",
-    "os": "debian",
-    "ostype_vbox": "Debian_64",
-    "ostype_vmware": "debian7-64",
-    "output_directory": "templates/debian-7/images",
-    "release": "v0.4-60-g6ad9881",
+    "iso_url": "http://ftp.hosteurope.de/mirror/centos.org/7/isos/x86_64/CentOS-7-x86_64-Minimal-1503-01.iso",
+    "manage_sources_list": "",
+    "os": "rhel",
+    "ostype_vbox": "RedHat_64",
+    "ostype_vmware": "centos-64",
+    "output_directory": "templates/centos-7/images",
+    "release": "0.1.0",
     "root_password": "muxOFub4u=_POqqIiSBbMa6s+aBlE-1e"
   },
   "builders": [
@@ -36,24 +37,10 @@
       "ssh_password": "z1ftLAU6PYKxB3_RRbzyax5O24sflB1S",
       "ssh_wait_timeout": "30m",
       "boot_wait": "5s",
-      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -hP now",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
       "disk_size": 25000,
       "boot_command": [
-        "<esc><wait>",
-        "install ",
-        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `http_config_name` }} ",
-        "debian-installer=en_US ",
-        "auto ",
-        "locale=en_US ",
-        "kbd-chooser/method=de ",
-        "keyboard-configuration/xkb-keymap=de ",
-        "netcfg/get_hostname={{ .Name }} ",
-        "netcfg/get_domain=vagrantup.com ",
-        "fb=false ",
-        "debconf/frontend=noninteractive ",
-        "console-setup/ask_detect=false ",
-        "console-keymaps-at/keymap=de ",
-        "<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `http_config_name` }}<enter>"
       ],
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "1024"],
@@ -73,12 +60,12 @@
     },
     {
       "type": "file",
-      "source": "assets/scripts/provision/debian",
+      "source": "assets/scripts/provision/rhel",
       "destination": "/tmp/packer-provision/provision/"
     },
     {
       "type": "file",
-      "source": "assets/scripts/bootstrap/debian",
+      "source": "assets/scripts/bootstrap/rhel",
       "destination": "/tmp/packer-provision/bootstrap/"
     },
     {
@@ -97,12 +84,23 @@
     }
   ],
   "post-processors": [
-    {
-      "type": "vagrant",
-      "keep_input_artifact": false,
-      "output": "{{ user `boxes_directory` }}/{{ user `box_name` }}-{{ .Provider }}-{{ user `release` }}.box",
-      "vagrantfile_template": "Vagrantfile.template"
-    }
+    [
+      {
+        "type": "vagrant",
+        "keep_input_artifact": false,
+        "output": "{{ user `boxes_directory` }}/{{ user `box_name` }}-{{ .Provider }}-{{ user `release` }}.box",
+        "vagrantfile_template": "Vagrantfile.template"
+      },
+      {
+        "type": "atlas",
+        "artifact": "{{ user `atlas_username` }}/{{ user `box_name` }}",
+        "artifact_type": "vagrant.box",
+        "metadata": {
+          "provider": "virtualbox",
+          "version": "{{ user `release` }}"
+        }
+      }
+    ]
   ],
   "push": {
     "name": "",
