@@ -1,0 +1,59 @@
+config=$1
+
+#        -var release=$(date +'%Y.%m.%d.1') \
+
+case $config in
+  centos-6.6)
+    for config in \
+      min \
+      puppet-generic \
+    ; do
+
+      packer push \
+        -name bechtoldt/centos-6.6-${config} \
+        templates/centos-6/centos-6.6-${config}.json
+    done
+  ;;
+
+  centos-7.0)
+    for config in \
+      min \
+      puppet-generic \
+      salt-2015.8.0 \
+      salt-generic \
+    ; do
+
+      packer push \
+        -name bechtoldt/centos-7.0-${config} \
+        templates/centos-7/centos-7.0-${config}.json
+    done
+  ;;
+
+  debian-7.9)
+    for config in \
+      min \
+      min-bpo \
+      puppet-generic \
+      salt-2015.8.0 \
+      salt-generic \
+    ; do
+
+      packer push \
+        -name bechtoldt/debian-7.9-${config} \
+        templates/debian-7/debian-7.9-${config}.json
+    done
+  ;;
+
+  debian-8.0)
+    for config in \
+      min \
+      puppet-generic \
+      salt-generic \
+    ; do
+
+      packer push \
+        -name bechtoldt/debian-8.0-${config} \
+        templates/debian-8/debian-8.0-${config}.json
+    done
+  ;;
+esac
