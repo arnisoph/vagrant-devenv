@@ -10,7 +10,8 @@
     "manage_sources_list": "",
     "os": null,
     "release": "latest",
-    "root_password": ""
+    "root_password": "",
+    "temp_disable_ipv6": ""
   },
   "builders": [
     {
@@ -48,7 +49,8 @@
         "SLEEP_SECONDS=133337",
         "CUSTOM_PROVISIONERS={{ user `custom_provisioners` }}",
         "CUSTOM_PROVISIONERS_CONTEXT={{ user `custom_provisioners_context` }}",
-        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}"
+        "MANAGE_SOURCES_LIST={{ user `manage_sources_list` }}",
+        "TEMP_DISABLE_IPV6={{ user `temp_disable_ipv6` }}"
       ]
     }
   ],
